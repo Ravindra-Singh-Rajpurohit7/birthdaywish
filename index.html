@@ -4,6 +4,7 @@
   <title>Happy Birthday</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    
 .content {
   position: relative;
   z-index: 2;
@@ -92,6 +93,82 @@
     margin-bottom: 15px;
   }
 }
+    /* 🎂 3D Cake Styling */
+.cake-3d-container {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.cake-3d {
+  position: relative;
+  width: 200px;
+  height: 150px;
+  margin: auto;
+  transform-style: preserve-3d;
+}
+
+.layer {
+  position: absolute;
+  width: 200px;
+  height: 40px;
+  border-radius: 10px;
+  left: 0;
+}
+
+.top {
+  background: #ff9aa2;
+  top: 0;
+}
+
+.middle {
+  background: #ffb7b2;
+  top: 45px;
+}
+
+.bottom {
+  background: #ffdac1;
+  top: 90px;
+}
+
+.slice {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  right: 0;
+  background: rgba(255,255,255,0.5);
+  transform: translateX(0);
+  transition: transform 1s ease;
+}
+
+.cut-btn {
+  margin-top: 30px;
+  padding: 12px 24px;
+  background: #ff4081;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.birthday-text {
+  margin-top: 25px;
+  font-size: 22px;
+  color: #ff4081;
+  display: none;
+  animation: fadeIn 1.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
   </style>
 </head>
 <body>
@@ -108,6 +185,12 @@
       music.play();
     }
   }, { once: true });
+  <script>
+function cutCake() {
+  document.getElementById("slice").style.transform = "translateX(120%)";
+  document.getElementById("wishText").style.display = "block";
+}
+</script>
 </script>
 <div class="content">
 
@@ -123,6 +206,23 @@
 <div class="balloon" style="left:70%; background:#e040fb; animation-delay:1s;"></div>
 <div class="balloon" style="left:90%; background:#69f0ae; animation-delay:3s;"></div>
 <!-- deploy trigger -->
+  <!-- 🎂 3D Cake Section -->
+<div class="cake-3d-container">
+  <div class="cake-3d" id="cake">
+    <div class="layer top"></div>
+    <div class="layer middle"></div>
+    <div class="layer bottom"></div>
+    <div class="slice" id="slice"></div>
+  </div>
+
+  <button class="cut-btn" onclick="cutCake()">🎂 Cut the Cake</button>
+
+  <h2 class="birthday-text" id="wishText">
+    🎉 Happy Birthday Suman Ji 🎉<br>
+    💖 Stay Happy Always 💖
+  </h2>
+</div>
 </body>
 
 </html>
+
