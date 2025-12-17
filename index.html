@@ -209,6 +209,9 @@
 <audio id="bgm" loop>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
+  <audio id="cutSound">
+  <source src="cut.mp3.mpeg" type="audio/mpeg">
+</audio>
 
 <script>
   document.addEventListener("click", () => {
@@ -219,9 +222,47 @@
     }
   }, { once: true });
   
+<script>
 function cutCake() {
-  document.getElementById("slice").style.transform = "translateX(120%)";
-  document.getElementById("wishText").style.display = "block";
+  const slice = document.getElementById("slice");
+  const wish = document.getElementById("wishText");
+  const knife = document.getElementById("knife");
+  const sound = document.getElementById("cutSound");
+
+  // 🔔 sound
+  if (sound) sound.play();
+
+  // 🔪 knife animation
+  knife.style.opacity = "1";
+  knife.style.top = "60px";
+
+  // 🎂 slice move
+  setTimeout(() => {
+    slice.style.transform = "translateX(120%) rotateY(35deg)";
+  }, 600);
+
+  // 🎉 text show
+  setTimeout(() => {
+    wish.style.display = "block";
+    launchConfetti();
+  }, 1200);
+}
+
+// 🎊 Confetti function
+function launchConfetti() {
+  for (let i = 0; i < 40; i++) {
+    const c = document.createElement("div");
+    c.className = "confetti";
+    c.style.left = Math.random() * 100 + "vw";
+    c.style.background =
+      ["#ff4081", "#ffd740", "#69f0ae", "#40c4ff"][Math.floor(Math.random() * 4)];
+    c.style.animationDuration = 2 + Math.random() * 2 + "s";
+    document.body.appendChild(c);
+
+    setTimeout(() => c.remove(), 4000);
+  }
+}
+</script>
 }
 </script>
 <div class="content">
@@ -258,6 +299,7 @@ function cutCake() {
 </body>
 
 </html>
+
 
 
 
