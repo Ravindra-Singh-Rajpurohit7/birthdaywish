@@ -170,8 +170,40 @@
     transform: scale(1);
   }
 }
+    /* 🔪 Knife */
+.knife {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  width: 6px;
+  height: 120px;
+  background: linear-gradient(#ccc, #999);
+  transform: translateX(-50%);
+  border-radius: 3px;
+  opacity: 0;
+  transition: top 0.8s ease, opacity 0.3s;
+  z-index: 10;
+}
+
+/* 🎊 Confetti */
+.confetti {
+  position: fixed;
+  top: -10px;
+  width: 8px;
+  height: 8px;
+  background: red;
+  animation: fall 3s linear forwards;
+  z-index: 999;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
   </style>
-</head>
+</head>  
 <body>
     <!-- 🎵 Background Music -->
 <audio id="bgm" loop>
@@ -212,6 +244,7 @@ function cutCake() {
     <div class="layer top"></div>
     <div class="layer middle"></div>
     <div class="layer bottom"></div>
+    <div class="knife" id="knife"></div>
     <div class="slice" id="slice"></div>
   </div>
 
@@ -225,5 +258,6 @@ function cutCake() {
 </body>
 
 </html>
+
 
 
