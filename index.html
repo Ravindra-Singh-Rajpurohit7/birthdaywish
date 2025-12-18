@@ -106,6 +106,43 @@
   margin: auto;
   transform-style: preserve-3d;
 }
+    /* 🕯️ Candle */
+.candle {
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  width: 8px;
+  height: 30px;
+  background: #fff;
+  border-radius: 4px;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+/* 🔥 Flame */
+.flame {
+  position: absolute;
+  top: -12px;
+  left: -4px;
+  width: 16px;
+  height: 16px;
+  background: radial-gradient(circle, #ffd700, #ff4500);
+  border-radius: 50%;
+  animation: flicker 0.3s infinite;
+}
+
+/* Flame animation */
+@keyframes flicker {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* 🔥 Blow out */
+.flame.blow {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
     
 
 .layer {
@@ -240,6 +277,8 @@ function cutCake() {
   setTimeout(() => {
     slice.style.transform = "translateX(120%) rotateY(35deg)";
   }, 600);
+  const flame = document.getElementById("flame");
+if (flame) flame.classList.add("blow");
 
   // 🎉 text show
   setTimeout(() => {
@@ -282,6 +321,10 @@ function launchConfetti() {
   <!-- 🎂 3D Cake Section -->
 <div class="cake-3d-container">
   <div class="cake-3d" id="cake">
+    <!-- 🕯️ Candle -->
+<div class="candle">
+  <div class="flame" id="flame"></div>
+</div>
     <div class="layer top"></div>
     <div class="layer middle"></div>
     <div class="layer bottom"></div>
@@ -299,6 +342,7 @@ function launchConfetti() {
 </body>
 
 </html>
+
 
 
 
