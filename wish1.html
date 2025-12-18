@@ -80,17 +80,34 @@
     max-width: 300px;
   }
 
-  .btn {
-    display: inline-block;
-    width: 90%;
-    padding: 14px;
-    font-size: 1.1rem;
-  }
+
 
   audio {
     width: 100%;
     margin-bottom: 15px;
   }
+}
+    /* 🌸 Wish1 Next Button */
+.next-btn-1 {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 12px 32px;
+  font-size: 1.05rem;
+  text-decoration: none;
+  color: #333;
+  background: #ffd54f;
+  border-radius: 25px;
+  box-shadow: 0 0 15px rgba(255,213,79,0.8);
+  transition: all 0.3s ease;
+}
+
+.next-btn-1:hover {
+  box-shadow: 0 0 25px rgba(255,213,79,1);
+  transform: scale(1.05);
+}
+
+.next-btn-1:active {
+  transform: scale(0.95);
 }
   </style>
 </head>
@@ -119,7 +136,9 @@ Today is not just a birthday,<br>
 it’s the start of something beautiful 🌸
 </p>
 
-<a class="btn" href="wish2.html">Next →</a>
+<a href="wish2.html" class="next-btn-1">
+  Next 🌸
+</a>
 </div>
 <!-- 🎈 Balloons -->
 <div class="balloon" style="left:10%; background:#ff5252;"></div>
@@ -129,4 +148,5 @@ it’s the start of something beautiful 🌸
 <div class="balloon" style="left:90%; background:#69f0ae; animation-delay:3s;"></div>
 
 </body>
+
 </html>
