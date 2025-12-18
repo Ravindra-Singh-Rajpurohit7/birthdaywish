@@ -130,6 +130,29 @@
   border-radius: 50%;
   animation: flicker 0.3s infinite;
 }
+    /* 💨 Smoke after candle blow */
+.smoke {
+  position: absolute;
+  top: -25px;
+  left: -6px;
+  width: 20px;
+  height: 20px;
+  background: rgba(200,200,200,0.6);
+  border-radius: 50%;
+  filter: blur(4px);
+  animation: smokeUp 2s ease-out forwards;
+}
+
+@keyframes smokeUp {
+  0% {
+    opacity: 0.8;
+    transform: translateY(0) scale(0.8);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-40px) scale(1.5);
+  }
+}
 
 /* Flame animation */
 @keyframes flicker {
@@ -279,12 +302,19 @@ function cutCake() {
   }, 600);
   const flame = document.getElementById("flame");
 if (flame) flame.classList.add("blow");
+  const smoke = document.getElementById("smoke");
+if (smoke) {
+  smoke.style.display = "block";
+  setTimeout(() => smoke.remove(), 2000);
+}
 
   // 🎉 text show
   setTimeout(() => {
     wish.style.display = "block";
     launchConfetti();
   }, 1200);
+  document.querySelector(".cut-btn").disabled = true;
+document.querySelector(".cut-btn").innerText = "🎉 Enjoy the Moment 🎉";
 }
 
 // 🎊 Confetti function
@@ -324,6 +354,7 @@ function launchConfetti() {
     <!-- 🕯️ Candle -->
 <div class="candle">
   <div class="flame" id="flame"></div>
+  <div class="smoke" id="smoke" style="display:none;></div>
 </div>
     <div class="layer top"></div>
     <div class="layer middle"></div>
@@ -342,6 +373,7 @@ function launchConfetti() {
 </body>
 
 </html>
+
 
 
 
